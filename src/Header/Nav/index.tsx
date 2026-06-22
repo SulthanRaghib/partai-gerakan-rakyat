@@ -110,6 +110,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           </div>
         </div>
         
+        <Link 
+          href="/posts" 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className={cn("text-2xl font-bold transition-colors", isActive('/posts') ? "text-red-600" : "text-foreground")}
+        >
+          Kabar Pergerakan
+        </Link>
+        
         {navItems.map(({ link }, i) => {
           const href = link.type === 'reference' && typeof link.reference?.value === 'object' && link.reference.value.slug
               ? `${link.reference?.relationTo !== 'pages' ? `/${link.reference?.relationTo}` : ''}/${link.reference.value.slug}`
@@ -220,6 +228,18 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
             </div>
           </div>
         </div>
+
+        {/* Kabar Pergerakan */}
+        <Link 
+          href="/posts" 
+          className={cn(
+            "relative px-3 py-2 font-medium transition-colors hover:text-red-600 group",
+            isActive('/posts') ? "text-red-600" : "text-foreground/80"
+          )}
+        >
+          Kabar Pergerakan
+          <span className={cn(activeLine, isActive('/posts') ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100")} />
+        </Link>
 
         {navItems.map(({ link }, i) => {
           const href =

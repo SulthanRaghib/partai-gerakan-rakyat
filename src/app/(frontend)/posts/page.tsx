@@ -31,8 +31,11 @@ export default async function Page() {
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+        <div className="prose dark:prose-invert max-w-none text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-black mb-4">Kabar Pergerakan</h1>
+          <p className="text-xl text-foreground/70 leading-relaxed">
+            Pusat informasi, siaran pers, opini, dan berita terbaru seputar langkah konkrit Partai Gerakan Rakyat di Cilegon. Tetap terhubung dan awasi langkah kami!
+          </p>
         </div>
       </div>
 
@@ -58,6 +61,7 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Posts`,
+    title: `Kabar Pergerakan - Berita & Update Terbaru | Partai Gerakan Rakyat Cilegon`,
+    description: 'Pusat informasi, siaran pers, dan berita terbaru seputar kegiatan Partai Gerakan Rakyat di kota Cilegon.'
   }
 }
