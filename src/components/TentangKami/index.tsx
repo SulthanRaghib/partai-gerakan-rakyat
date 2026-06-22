@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { History, BookOpen, Flag, Target, Users, Flame, ChevronRight, GraduationCap } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 
@@ -29,6 +29,17 @@ const tabs = [
 
 export const TentangKami: React.FC = () => {
   const [activeTab, setActiveTab] = useState(tabs[0].id)
+
+  useEffect(() => {
+    // Membaca query string ?tab=... dari URL jika ada
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      const tabParam = params.get('tab')
+      if (tabParam && tabs.some(t => t.id === tabParam)) {
+        setActiveTab(tabParam)
+      }
+    }
+  }, [])
 
   return (
     <main className="w-full min-h-screen bg-background font-sans pt-24 pb-32">
@@ -64,7 +75,10 @@ export const TentangKami: React.FC = () => {
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => {
+                      setActiveTab(tab.id)
+                      window.history.pushState(null, '', `?tab=${tab.id}`)
+                    }}
                     className={cn(
                       "flex items-center justify-between w-full p-4 rounded-2xl text-left transition-all duration-300",
                       isActive 
@@ -100,12 +114,16 @@ export const TentangKami: React.FC = () => {
                     <div className="w-16 h-16 rounded-2xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-8 text-red-600 dark:text-red-400">
                       <History className="w-8 h-8" />
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Kristalisasi Semangat Kerelawanan</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Sejarah & Akar Gerakan Rakyat</h2>
+                    
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      Berawal dari ikatan solidaritas yang kuat, Organisasi Masyarakat (Ormas) <strong>Gerakan Rakyat</strong> lahir sebagai tonggak baru dalam dinamika politik Indonesia. Kami bukan sekadar perkumpulan biasa; kami adalah kristalisasi dari semangat kerelawanan dan perjuangan gagasan para pendukung perubahan pada Pemilu Presiden 2024.
+                      Berawal dari semangat kerelawanan yang murni, <strong>Organisasi Masyarakat (Ormas) Gerakan Rakyat</strong> hadir sebagai fenomena politik teranyar di Indonesia. Kami lahir dari rahim perjuangan gagasan para pendukung Anies Baswedan pada Pemilihan Presiden 2024. Deklarasi resmi yang dikumandangkan pada <strong>27 Februari 2025</strong> di Jakarta Selatan, menjadi tonggak sejarah di mana Bapak Sahrin Hamid selaku Ketua Umum, dan Bapak Anies Baswedan sebagai Tokoh Inspirasi, merajut ikatan emosional dan ideologis yang tak terpisahkan.
                     </p>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      Kehadiran kami didorong oleh satu tekad yang bulat: memastikan bahwa semangat perubahan tersebut tidak padam, melainkan terus menyala, berakar kuat di tengah masyarakat, dan terorganisir dengan sangat baik menuju masa depan politik yang lebih partisipatif.
+                      Gerakan ini sejatinya telah mengakar secara organik sejak tahun 2023. Kami menyadari bahwa cita-cita perubahan tak boleh terhenti usai pemilu. Dengan warna kebanggaan jingga (oranye) yang melambangkan fajar harapan <strong>'Indonesia Menyala'</strong> untuk mengusir bayang-bayang #IndonesiaGelap, kami bertransformasi dari sekadar relawan menjadi kekuatan masyarakat yang terstruktur.
+                    </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Kini, dengan struktur kepengurusan yang menjangkau 38 provinsi di seluruh Nusantara, perjalanan Gerakan Rakyat berpotensi besar untuk bermetamorfosis menjadi Partai Politik yang tangguh; siap mengusung kembali gagasan perubahan berkelanjutan di panggung politik nasional.
                     </p>
                   </div>
                 )}
@@ -116,16 +134,21 @@ export const TentangKami: React.FC = () => {
                     <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-8 text-orange-600 dark:text-orange-400">
                       <BookOpen className="w-8 h-8" />
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Deklarasi & Filosofi Identitas</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Merespons Keresahan, Menyalakan Harapan</h2>
+                    
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      Secara resmi, langkah besar ini dimulai pada Kamis, <strong>27 Februari 2025</strong>, melalui deklarasi bersejarah di <em>Jakarta Inisiatif Office</em>, Jakarta Selatan. Dipimpin oleh <strong>Sahrin Hamid</strong>, gerakan ini merajut ikatan ideologis yang tak terpisahkan dengan <strong>Anies Baswedan</strong> sebagai Tokoh Inspirasi utama kami. Beliau berpesan bahwa kontestasi boleh usai, namun cita-cita membawa perubahan dan mempererat silaturahmi kebangsaan harus terus dihidupkan.
+                      Gerakan Rakyat tidak sekadar hadir; kami lahir untuk menjawab dahaga publik akan ruang perjuangan politik yang transparan, modern, dan benar-benar berpihak pada rakyat. Di tengah ketidakpuasan terhadap praktik politik yang elitis—di mana suara masyarakat seringkali tak terdengar dan jarak dengan pengambil kebijakan kian melebar—kami menawarkan jalan alternatif: sebuah gerakan nurani yang dibangun kokoh dari bawah (*grassroots*).
                     </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Kami menolak keras politik transaksional yang mengerdilkan nilai-nilai demokrasi. Dengan mengedepankan integritas, keberanian moral, dan semangat gotong royong, Gerakan Rakyat berikhtiar memulihkan peradaban politik Indonesia menjadi lebih bermartabat. Ini bukan tentang ambisi kelompok tertentu, melainkan mengorganisir energi kolektif warga agar lebih terarah untuk menghasilkan dampak sosial, ekonomi, dan kemanusiaan yang nyata.
+                    </p>
+                    
                     <div className="mt-8 p-6 rounded-2xl bg-orange-500/10 border border-orange-500/20">
                       <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-orange-600 dark:text-orange-400">
-                        <Flame className="w-5 h-5" /> Filosofi Warna Jingga
+                        <Flame className="w-5 h-5" /> Dari Rakyat, Untuk Rakyat
                       </h3>
                       <p className="text-foreground/80 leading-relaxed">
-                        Identitas kami diwakili oleh warna oranye (jingga) yang menyala. Warna ini bukan sekadar pilihan estetika, melainkan simbol perlawanan terhadap keputusasaan (#IndonesiaGelap). Jingga adalah fajar harapan yang kami usung untuk mewujudkan visi <strong>'Indonesia Menyala'</strong>—sebuah bangsa yang terang benderang, adil, dan makmur untuk semua.
+                        Kami adalah wadah perjuangan bersama. Bergerak untuk memastikan bahwa suara rakyat kembali menjadi pusat keputusan bangsa. Transformasi kami ke depan menjadi partai politik adalah instrumen dan "kendaraan" strategis agar gagasan-gagasan baik ini dapat diwujudkan melalui kewenangan konstitusional.
                       </p>
                     </div>
                   </div>
