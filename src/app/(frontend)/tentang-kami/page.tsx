@@ -4,11 +4,11 @@ import { History } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Sejarah Singkat - Partai Gerakan Rakyat',
-  description: 'Pelajari sejarah berdirinya Partai Gerakan Rakyat dari relawan Anies Baswedan, latar belakang, dan deklarasi resmi kami.',
+  description: 'Sejarah berdirinya Partai Gerakan Rakyat dari semangat relawan Anies Baswedan menuju gerakan politik nasional.',
   keywords: 'Sejarah Partai Gerakan Rakyat, Sahrin Hamid, Anies Baswedan, Deklarasi Gerakan Rakyat, Relawan Anies',
   openGraph: {
     title: 'Sejarah Singkat - Partai Gerakan Rakyat',
-    description: 'Pelajari sejarah berdirinya Partai Gerakan Rakyat dari relawan Anies Baswedan.',
+    description: 'Sejarah berdirinya Partai Gerakan Rakyat dari relawan Anies Baswedan.',
     url: 'https://compro-bapak.com/tentang-kami',
     siteName: 'Partai Gerakan Rakyat',
     images: [
@@ -51,17 +51,35 @@ export default function SejarahSingkatPage() {
       <div className="w-16 h-16 rounded-2xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-8 text-red-600 dark:text-red-400">
         <History className="w-8 h-8" />
       </div>
-      <h2 className="text-3xl md:text-4xl font-bold mb-6">Sejarah & Akar Gerakan Rakyat</h2>
+      <h2 className="text-3xl md:text-4xl font-bold mb-6">Sejarah Singkat: Dari Relawan Menjadi Kekuatan Nasional</h2>
       
-      <p className="text-lg text-muted-foreground leading-relaxed">
-        Berawal dari semangat kerelawanan yang murni, <strong>Organisasi Masyarakat (Ormas) Gerakan Rakyat</strong> hadir sebagai fenomena politik teranyar di Indonesia. Kami lahir dari rahim perjuangan gagasan para pendukung Anies Baswedan pada Pemilihan Presiden 2024. Deklarasi resmi yang dikumandangkan pada <strong>27 Februari 2025</strong> di Jakarta Selatan, menjadi tonggak sejarah di mana Bapak Sahrin Hamid selaku Ketua Umum, dan Bapak Anies Baswedan sebagai Tokoh Inspirasi, merajut ikatan emosional dan ideologis yang tak terpisahkan.
-      </p>
-      <p className="text-lg text-muted-foreground leading-relaxed">
-        Gerakan ini sejatinya telah mengakar secara organik sejak tahun 2023. Kami menyadari bahwa cita-cita perubahan tak boleh terhenti usai pemilu. Dengan warna kebanggaan jingga (oranye) yang melambangkan fajar harapan <strong>'Indonesia Menyala'</strong> untuk mengusir bayang-bayang #IndonesiaGelap, kami bertransformasi dari sekadar relawan menjadi kekuatan masyarakat yang terstruktur.
-      </p>
-      <p className="text-lg text-muted-foreground leading-relaxed">
-        Kini, dengan struktur kepengurusan yang menjangkau 38 provinsi di seluruh Nusantara, perjalanan Gerakan Rakyat berpotensi besar untuk bermetamorfosis menjadi Partai Politik yang tangguh; siap mengusung kembali gagasan perubahan berkelanjutan di panggung politik nasional.
-      </p>
+      <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+        <p>
+          <strong>Organisasi Masyarakat (Ormas) Gerakan Rakyat</strong> bukanlah perkumpulan biasa. Kami lahir secara organik dari rahim perjuangan dan semangat kerelawanan para pendukung Anies Baswedan pada Pilpres 2024. Cikal bakal gerakan ini sesungguhnya telah terkonsolidasi sejak akhir tahun 2023, didorong oleh kesadaran kuat bahwa cita-cita perubahan harus dilestarikan dalam sebuah wadah yang permanen.
+        </p>
+        
+        <div className="my-8 p-6 rounded-2xl border border-red-500/20 bg-red-500/5">
+          <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-3">Deklarasi Bersejarah (27 Februari 2025)</h3>
+          <p>
+            Puncaknya terjadi pada Kamis, 27 Februari 2025. Bertempat di <em>Jakarta Inisiatif Office</em>, Gerakan Rakyat secara resmi dideklarasikan. Momen bersejarah ini dipimpin oleh <strong>Sahrin Hamid</strong> selaku Ketua Umum, dan dihadiri langsung oleh Bapak <strong>Anies Baswedan</strong> sebagai Tokoh Inspirasi utama kami. Kehadiran beliau menegaskan satu pesan krusial: kontestasi pemilu mungkin telah usai, namun ikatan emosional dan perjuangan mewujudkan keadilan sosial harus terus menyala dan diperkuat.
+          </p>
+        </div>
+
+        <p>
+          <strong>Filosofi Jingga: Menuju Indonesia Menyala</strong><br/>
+          Identitas kami terlukis jelas dalam pendar warna jingga (oranye). Warna ini bukanlah pilihan estetika semata, melainkan filosofi perlawanan terhadap isu keputusasaan (#IndonesiaGelap). Jingga adalah pendar fajar yang menjanjikan masa depan di mana gagasan <strong>'Indonesia Menyala'</strong>—terang benderang, adil, dan makmur—dapat diwujudkan.
+        </p>
+
+        <p>
+          <strong>Pendidikan Politik Melalui "Spartan"</strong><br/>
+          Lebih dari sekadar ormas, misi utama Gerakan Rakyat adalah membangun kesadaran politik yang matang di akar rumput. Melalui semboyan <em>"Gotong-Royong Untuk Indonesia"</em>, kami menginisiasi <strong>Sekolah Politik Kerakyatan (Spartan)</strong>. Ini adalah sarana pendidikan politik inklusif bagi seluruh lapisan masyarakat, demi menciptakan pemilih yang kritis dan berdaya saing.
+        </p>
+
+        <p>
+          <strong>Potensi Transformasi Menjadi Partai Politik</strong><br/>
+          Dengan struktur kepengurusan yang kini telah menggurita di 38 provinsi di seluruh Nusantara, perjalanan Gerakan Rakyat memicu spekulasi dan harapan besar. Tingginya aspirasi dari anggota dan basis relawan untuk bertransformasi menjadi Partai Politik (Parpol) bukanlah sekadar wacana. Menatap ke depan, kami bersiap menjadi "kendaraan politik" strategis yang tangguh untuk melanjutkan gagasan perubahan, serta membuka kemungkinan mengusung kembali tokoh inspirasi kami pada kontestasi politik di masa depan.
+        </p>
+      </div>
     </div>
   )
 }
