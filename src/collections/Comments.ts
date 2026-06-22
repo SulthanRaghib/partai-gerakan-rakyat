@@ -5,6 +5,7 @@ import { authenticated } from '../access/authenticated'
 export const Comments: CollectionConfig = {
   slug: 'comments',
   admin: {
+    group: 'Interaksi Publik',
     useAsTitle: 'authorName',
     defaultColumns: ['authorName', 'post', 'isApproved', 'createdAt'],
   },

@@ -22,12 +22,21 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     components: {
+      graphics: {
+        Logo: '@/components/AdminLogo#AdminLogo',
+        Icon: '@/components/AdminLogo#AdminIcon',
+      },
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeLogin: ['@/components/BeforeLogin'],
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
+    },
+    meta: {
+      titleSuffix: '- Panel Web',
+      favicon: '/assets/img/logo_pgr.png',
+      ogImage: '/assets/img/logo_pgr.png',
     },
     importMap: {
       baseDir: path.resolve(dirname),
