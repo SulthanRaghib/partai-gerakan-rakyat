@@ -103,31 +103,60 @@ export default function StrukturOrganisasiPage() {
             />
           </div>
 
-          {/* List Pengurus - Rendered as a grid */}
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-            <div className="flex flex-col p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-              <span className="font-semibold text-red-600 dark:text-red-400 text-sm mb-1">1. Ketua</span>
-              <span className="font-bold text-lg">H. Sakim, S.Pd.l</span>
+          {/* Bagan Struktur (Org Chart) */}
+          <div className="flex flex-col items-center py-8">
+            {/* Ketua */}
+            <div className="p-4 bg-red-500/10 border-2 border-red-500 rounded-xl text-center w-64 shadow-lg z-10 relative">
+              <div className="text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-widest mb-1">Ketua</div>
+              <div className="text-lg font-bold text-foreground">H. Sakim, S.Pd.l</div>
             </div>
-            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground text-sm mb-1">2. Wakil Ketua</span>
-              <span className="font-bold text-lg">Triyono Eddy Santoso</span>
+
+            {/* Connecting Line */}
+            <div className="w-1 h-8 bg-foreground/20" />
+
+            {/* Wakil Ketua */}
+            <div className="p-4 bg-foreground/5 border border-foreground/20 rounded-xl text-center w-64 z-10 relative shadow-sm">
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Wakil Ketua</div>
+              <div className="text-lg font-bold">Triyono Eddy Santoso</div>
             </div>
-            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground text-sm mb-1">3. Sekretaris</span>
-              <span className="font-bold text-lg">Drs. Suwito</span>
+
+            {/* Connecting Line & Branching Horizontal Line */}
+            <div className="w-1 h-8 bg-foreground/20" />
+            <div className="w-full max-w-xl h-1 bg-foreground/20 relative">
+              {/* Corner roundings for visual flair (optional) */}
+              <div className="absolute -left-0.5 -top-0.5 w-1 h-1 rounded-full bg-foreground/40" />
+              <div className="absolute -right-0.5 -top-0.5 w-1 h-1 rounded-full bg-foreground/40" />
             </div>
-            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground text-sm mb-1">4. Wakil Sekretaris</span>
-              <span className="font-bold text-lg">Rakha Dwi Saputra</span>
-            </div>
-            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground text-sm mb-1">5. Bendahara</span>
-              <span className="font-bold text-lg">Hj. Andi Yuliyanah</span>
-            </div>
-            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground text-sm mb-1">6. Wakil Bendahara</span>
-              <span className="font-bold text-lg">Wildayani</span>
+
+            {/* Sekretaris & Bendahara Branches */}
+            <div className="flex w-full max-w-xl justify-between relative mt-8">
+              {/* Sekretaris Branch */}
+              <div className="flex flex-col items-center flex-1">
+                <div className="absolute -top-8 w-1 h-8 bg-foreground/20" style={{ left: '25%' }} />
+                <div className="p-4 bg-foreground/5 border border-foreground/20 rounded-xl text-center w-11/12 max-w-[240px] shadow-sm">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Sekretaris</div>
+                  <div className="text-lg font-bold">Drs. Suwito</div>
+                </div>
+                <div className="w-1 h-8 bg-foreground/20" />
+                <div className="p-4 bg-foreground/5 border border-foreground/20 rounded-xl text-center w-11/12 max-w-[240px] shadow-sm">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Wakil Sekretaris</div>
+                  <div className="text-lg font-bold">Rakha Dwi Saputra</div>
+                </div>
+              </div>
+
+              {/* Bendahara Branch */}
+              <div className="flex flex-col items-center flex-1">
+                <div className="absolute -top-8 w-1 h-8 bg-foreground/20" style={{ left: '75%' }} />
+                <div className="p-4 bg-foreground/5 border border-foreground/20 rounded-xl text-center w-11/12 max-w-[240px] shadow-sm">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Bendahara</div>
+                  <div className="text-lg font-bold">Hj. Andi Yuliyanah</div>
+                </div>
+                <div className="w-1 h-8 bg-foreground/20" />
+                <div className="p-4 bg-foreground/5 border border-foreground/20 rounded-xl text-center w-11/12 max-w-[240px] shadow-sm">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Wakil Bendahara</div>
+                  <div className="text-lg font-bold">Wildayani</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
