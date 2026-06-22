@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import React from 'react'
 import { Users, Award, Briefcase, ChevronRight } from 'lucide-react'
-import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Struktur Organisasi - Partai Gerakan Rakyat',
@@ -124,12 +123,11 @@ export default function StrukturOrganisasiPage() {
 
           {/* Image */}
           <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-foreground/10">
-            <Image 
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
               src="/assets/img/organisasi.png" 
               alt="Bagan Struktur Organisasi DPD Cilegon" 
-              fill
-              className="object-cover object-center hover:scale-105 transition-transform duration-700"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
             />
           </div>
         </div>
