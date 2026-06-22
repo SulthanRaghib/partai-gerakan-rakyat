@@ -8,13 +8,16 @@ export async function submitComment(formData: FormData) {
   try {
     const payload = await getPayload({ config: configPromise })
 
-    const postId = formData.get('postId') as string
+    const postIdString = formData.get('postId') as string
     const authorName = formData.get('authorName') as string
     const content = formData.get('content') as string
 
-    if (!postId || !authorName || !content) {
+    if (!postIdString || !authorName || !content) {
       return { success: false, error: 'Mohon isi semua kolom.' }
     }
+
+    // Konversi postId ke number karena Payload Postgres menggunakan number untuk ID
+    const postId = parseInt(postIdString, 10)
 
     await payload.create({
       collection: 'comments',

@@ -3,7 +3,7 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import React, { useEffect, useRef } from 'react'
 import { incrementPostViews } from '@/actions/incrementViews'
 
-export const PageClient: React.FC<{ postId?: string }> = ({ postId }) => {
+export const PageClient: React.FC<{ postId?: string | number }> = ({ postId }) => {
   const { setHeaderTheme } = useHeaderTheme()
   const hasIncremented = useRef(false)
 

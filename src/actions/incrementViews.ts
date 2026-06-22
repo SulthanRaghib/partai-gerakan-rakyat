@@ -3,14 +3,17 @@
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
-export async function incrementPostViews(postId: string) {
+export async function incrementPostViews(postId: string | number) {
   try {
     const payload = await getPayload({ config: configPromise })
+
+    // Payload Postgres uses number for IDs
+    const id = typeof postId === 'string' ? parseInt(postId, 10) : postId
 
     // Dapatkan data post saat ini
     const post = await payload.findByID({
       collection: 'posts',
-      id: postId,
+      id: id,
       depth: 0,
     })
 
@@ -25,7 +28,7 @@ export async function incrementPostViews(postId: string) {
     // Update post dengan view baru
     await payload.update({
       collection: 'posts',
-      id: postId,
+      id: id,
       data: {
         views: newViews,
       },

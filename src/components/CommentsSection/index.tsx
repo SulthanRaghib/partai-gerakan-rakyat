@@ -11,7 +11,7 @@ type Comment = {
 }
 
 export const CommentsSection: React.FC<{
-  postId: string
+  postId: string | number
   initialComments: Comment[]
 }> = ({ postId, initialComments }) => {
   const [comments, setComments] = useState<Comment[]>(initialComments)
@@ -24,7 +24,7 @@ export const CommentsSection: React.FC<{
     setMessage(null)
 
     const formData = new FormData(e.currentTarget)
-    formData.append('postId', postId)
+    formData.append('postId', postId.toString())
 
     const result = await submitComment(formData)
 
