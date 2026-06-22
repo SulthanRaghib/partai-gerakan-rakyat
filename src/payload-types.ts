@@ -271,7 +271,7 @@ export interface Post {
   slug: string;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  _status?: ('draft' | 'published' | 'draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

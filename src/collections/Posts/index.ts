@@ -49,7 +49,7 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   admin: {
     group: 'Manajemen Konten',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ['title', '_status', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -222,6 +222,20 @@ export const Posts: CollectionConfig<'posts'> = {
       admin: {
         position: 'sidebar',
         readOnly: true,
+      },
+    },
+    {
+      name: '_status',
+      type: 'select',
+      options: [
+        { label: 'Draft', value: 'draft' },
+        { label: 'Published', value: 'published' }
+      ],
+      admin: {
+        position: 'sidebar',
+        components: {
+          Cell: '@/components/PublishPostCell#PublishPostCell',
+        },
       },
     },
     slugField(),

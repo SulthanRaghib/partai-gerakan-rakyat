@@ -2,33 +2,38 @@
 
 import React, { useState } from 'react'
 
-export const ApproveCommentCell: React.FC<{
+export const PublishPostCell: React.FC<{
   cellData: any
   rowData: any
 }> = ({ cellData, rowData }) => {
-  const [isApproved, setIsApproved] = useState(Boolean(cellData))
+  // Payload draft statuses are typically 'published' or 'draft'
+  const [status, setStatus] = useState(cellData === 'published' ? 'published' : 'draft')
   const [isLoading, setIsLoading] = useState(false)
 
-  const toggleApproval = async (e: React.MouseEvent) => {
+  const isPublished = status === 'published'
+
+  const togglePublish = async (e: React.MouseEvent) => {
     e.stopPropagation()
     e.preventDefault()
 
     setIsLoading(true)
+    const newStatus = isPublished ? 'draft' : 'published'
+
     try {
-      const res = await fetch(`/api/comments/${rowData.id}`, {
+      const res = await fetch(`/api/posts/${rowData.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          isApproved: !isApproved,
+          _status: newStatus,
         }),
       })
 
       if (res.ok) {
-        setIsApproved(!isApproved)
+        setStatus(newStatus)
       } else {
-        alert('Gagal mengubah status komentar.')
+        alert('Gagal mengubah status artikel.')
       }
     } catch (err) {
       console.error(err)
@@ -39,7 +44,7 @@ export const ApproveCommentCell: React.FC<{
 
   return (
     <button
-      onClick={toggleApproval}
+      onClick={togglePublish}
       disabled={isLoading}
       style={{
         display: 'inline-flex',
@@ -48,28 +53,28 @@ export const ApproveCommentCell: React.FC<{
         padding: '4px 10px',
         borderRadius: '9999px', // Pill shape
         border: '1px solid',
-        backgroundColor: isApproved ? '#ecfdf5' : '#fef2f2',
-        borderColor: isApproved ? '#a7f3d0' : '#fecaca',
-        color: isApproved ? '#065f46' : '#991b1b',
+        backgroundColor: isPublished ? '#ecfdf5' : '#fffbeb',
+        borderColor: isPublished ? '#a7f3d0' : '#fde68a',
+        color: isPublished ? '#065f46' : '#92400e',
         cursor: isLoading ? 'wait' : 'pointer',
         fontSize: '0.8125rem',
         fontWeight: 600,
         transition: 'all 0.2s ease',
         lineHeight: 1.2,
       }}
-      title="Klik untuk mengubah status"
+      title="Klik untuk mengubah status publikasi"
     >
       <span
         style={{
           width: '6px',
           height: '6px',
           borderRadius: '50%',
-          backgroundColor: isApproved ? '#10b981' : '#ef4444',
+          backgroundColor: isPublished ? '#10b981' : '#f59e0b',
           display: 'inline-block',
           animation: isLoading ? 'pulse 1s infinite' : 'none',
         }}
       />
-      {isLoading ? 'Memproses...' : isApproved ? 'Tampil (Publik)' : 'Tersembunyi'}
+      {isLoading ? 'Memproses...' : isPublished ? 'Published' : 'Draft'}
     </button>
   )
 }
