@@ -25,16 +25,16 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         <div className="absolute left-0 top-full w-full h-4" />
         <div className="absolute left-0 top-[calc(100%+0.5rem)] w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50">
           <div className="bg-background border border-border rounded-xl shadow-xl p-2 flex flex-col gap-1">
-            <Link href="/tentang-kami?tab=sejarah" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
+            <Link href="/tentang-kami" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
               Sejarah Singkat
             </Link>
-            <Link href="/tentang-kami?tab=latar-belakang" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
+            <Link href="/tentang-kami/latar-belakang" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
               Latar Belakang
             </Link>
-            <Link href="/tentang-kami?tab=struktur" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
+            <Link href="/tentang-kami/struktur-organisasi" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
               Struktur Organisasi
             </Link>
-            <Link href="/tentang-kami?tab=visi-misi" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
+            <Link href="/tentang-kami/visi-misi" className="px-4 py-2 hover:bg-foreground/5 rounded-lg text-sm font-medium transition-colors">
               Visi dan Misi
             </Link>
           </div>
