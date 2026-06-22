@@ -30,7 +30,7 @@ export default function HubungiKamiPage() {
               </h3>
               <p className="text-muted-foreground mb-8">Kirimkan aspirasi atau pertanyaan Anda langsung kepada tim kami.</p>
 
-              <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-5">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium">Nama Lengkap</label>
                   <input type="text" id="name" className="w-full px-4 py-3 rounded-xl border border-border bg-foreground/5 focus:bg-background focus:ring-2 focus:ring-red-500 outline-none transition-all" placeholder="Tulis nama Anda" />
