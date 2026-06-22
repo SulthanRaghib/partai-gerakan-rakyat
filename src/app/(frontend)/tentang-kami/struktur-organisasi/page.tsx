@@ -92,43 +92,43 @@ export default function StrukturOrganisasiPage() {
           Di tingkat wilayah, Partai Gerakan Rakyat dikawal oleh tokoh-tokoh berdedikasi yang siap menyalakan harapan di tengah masyarakat. Berikut adalah susunan pengurus inti <strong>Dewan Pimpinan Daerah (DPD) Kota Cilegon untuk periode 2026-2031</strong>:
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* List Pengurus */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-              <span className="font-semibold text-red-600 dark:text-red-400">1. Ketua</span>
-              <span className="font-bold">H. Sakim, S.Pd.l</span>
-            </div>
-            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground">2. Wakil Ketua</span>
-              <span className="font-bold">Triyono Eddy Santoso</span>
-            </div>
-            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground">3. Sekretaris</span>
-              <span className="font-bold">Drs. Suwito</span>
-            </div>
-            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground">4. Wakil Sekretaris</span>
-              <span className="font-bold">Rakha Dwi Saputra</span>
-            </div>
-            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground">5. Bendahara</span>
-              <span className="font-bold">Hj. Andi Yuliyanah</span>
-            </div>
-            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
-              <span className="font-semibold text-muted-foreground">6. Wakil Bendahara</span>
-              <span className="font-bold">Wildayani</span>
-            </div>
-          </div>
-
-          {/* Image */}
-          <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-foreground/10">
+        <div className="flex flex-col gap-10">
+          {/* Image - Now full width for better visibility */}
+          <div className="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl border border-foreground/10 group">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/assets/img/organisasi.png" 
               alt="Bagan Struktur Organisasi DPD Cilegon" 
-              className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
             />
+          </div>
+
+          {/* List Pengurus - Rendered as a grid */}
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="flex flex-col p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+              <span className="font-semibold text-red-600 dark:text-red-400 text-sm mb-1">1. Ketua</span>
+              <span className="font-bold text-lg">H. Sakim, S.Pd.l</span>
+            </div>
+            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground text-sm mb-1">2. Wakil Ketua</span>
+              <span className="font-bold text-lg">Triyono Eddy Santoso</span>
+            </div>
+            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground text-sm mb-1">3. Sekretaris</span>
+              <span className="font-bold text-lg">Drs. Suwito</span>
+            </div>
+            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground text-sm mb-1">4. Wakil Sekretaris</span>
+              <span className="font-bold text-lg">Rakha Dwi Saputra</span>
+            </div>
+            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground text-sm mb-1">5. Bendahara</span>
+              <span className="font-bold text-lg">Hj. Andi Yuliyanah</span>
+            </div>
+            <div className="flex flex-col p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground text-sm mb-1">6. Wakil Bendahara</span>
+              <span className="font-bold text-lg">Wildayani</span>
+            </div>
           </div>
         </div>
       </section>

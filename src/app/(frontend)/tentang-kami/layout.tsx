@@ -27,15 +27,15 @@ export default function TentangKamiLayout({ children }: { children: React.ReactN
 
       {/* Interactive Content Section */}
       <section className="container px-4 md:px-6">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           
           {/* Sidebar / Tabs Navigation */}
-          <div className="w-full lg:w-1/3 flex-shrink-0">
+          <div className="w-full lg:w-72 flex-shrink-0">
             <TentangKamiNav />
           </div>
 
           {/* Dynamic Content Area (Pages) */}
-          <div className="w-full lg:w-2/3">
+          <div className="w-full lg:flex-1 min-w-0">
             <div className="min-h-[500px] p-8 md:p-12 rounded-3xl bg-background border border-foreground/10 shadow-2xl relative overflow-hidden">
               {/* Decorative background element inside card */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-bl-full z-0" />
