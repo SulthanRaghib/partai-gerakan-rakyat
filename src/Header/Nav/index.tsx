@@ -8,6 +8,7 @@ import { SearchIcon, ChevronDown, Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/utilities/ui'
 import { Logo } from '@/components/Logo/Logo'
+import { createPortal } from 'react-dom'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
@@ -15,6 +16,11 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Tutup menu saat pindah rute
   useEffect(() => {
@@ -42,6 +48,97 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   // Shared active line style
   const activeLine = "absolute -bottom-1.5 left-0 h-[2px] w-full bg-red-600 rounded-full origin-left transition-transform duration-300 ease-out"
+
+  const mobileMenuContent = (
+    <div 
+      className={cn(
+        "fixed inset-0 z-[100] bg-background flex flex-col overflow-y-auto transition-transform duration-300 ease-in-out md:hidden",
+        isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+      )}
+    >
+      {/* Mobile Menu Header */}
+      <div className="container flex items-center justify-between py-5 border-b border-border/30">
+        <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+          <Logo loading="eager" priority="high" />
+        </Link>
+        <div className="flex items-center gap-2">
+          <Link 
+            href="/search" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2 rounded-full text-foreground/60 hover:bg-foreground/5 hover:text-red-600 transition-colors"
+          >
+            <SearchIcon className="w-6 h-6" />
+          </Link>
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2 rounded-full bg-foreground/5 text-foreground hover:bg-red-50 hover:text-red-600 transition-colors"
+            aria-label="Close Menu"
+          >
+            <X className="w-7 h-7" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Content */}
+      <div className="container py-8 flex flex-col gap-8 flex-grow">
+        <Link 
+          href="/" 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className={cn("text-2xl font-bold transition-colors", isActive('/', true) ? "text-red-600" : "text-foreground")}
+        >
+          Beranda
+        </Link>
+        
+        {/* Dropdown Tentang Kami Mobile */}
+        <div className="flex flex-col border-y border-border/50 py-6">
+          <button 
+            onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+            className="flex items-center justify-between text-2xl font-bold text-foreground"
+          >
+            Tentang Kami
+            <ChevronDown className={cn("w-6 h-6 transition-transform", mobileDropdownOpen ? "rotate-180 text-red-600" : "")} />
+          </button>
+          
+          <div className={cn(
+            "flex flex-col gap-5 overflow-hidden transition-all duration-300", 
+            mobileDropdownOpen ? "max-h-[500px] mt-6 opacity-100" : "max-h-0 opacity-0"
+          )}>
+            <Link href="/tentang-kami" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami', true) ? "text-red-600" : "text-foreground/70")}>Sejarah Singkat</Link>
+            <Link href="/tentang-kami/latar-belakang" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami/latar-belakang') ? "text-red-600" : "text-foreground/70")}>Latar Belakang</Link>
+            <Link href="/tentang-kami/struktur-organisasi" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami/struktur-organisasi') ? "text-red-600" : "text-foreground/70")}>Struktur Organisasi</Link>
+            <Link href="/tentang-kami/visi-misi" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami/visi-misi') ? "text-red-600" : "text-foreground/70")}>Visi dan Misi</Link>
+          </div>
+        </div>
+        
+        {navItems.map(({ link }, i) => {
+          const href = link.type === 'reference' && typeof link.reference?.value === 'object' && link.reference.value.slug
+              ? `${link.reference?.relationTo !== 'pages' ? `/${link.reference?.relationTo}` : ''}/${link.reference.value.slug}`
+              : link.url;
+          const isDynamicActive = href && href !== '/' ? pathname.startsWith(href) : false;
+          
+          return (
+             <div key={i} onClick={() => setIsMobileMenuOpen(false)}>
+               <CMSLink 
+                 {...link} 
+                 appearance="link"
+                 className={cn("text-2xl font-bold transition-colors", isDynamicActive ? "text-red-600" : "text-foreground")} 
+               />
+             </div>
+          )
+        })}
+        
+        <div className="mt-auto pt-8 pb-8">
+          <Link 
+            href="/hubungi-kami" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center w-full py-5 rounded-full font-bold text-xl bg-red-600 text-white shadow-lg active:scale-95 transition-transform"
+          >
+            Hubungi Kami
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <>
@@ -196,95 +293,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       </div>
 
       {/* ======================= */}
-      {/* MOBILE MENU FULL SCREEN */}
+      {/* MOBILE MENU PORTAL      */}
       {/* ======================= */}
-      <div 
-        className={cn(
-          "fixed inset-0 z-[60] bg-background flex flex-col overflow-y-auto transition-transform duration-300 ease-in-out md:hidden",
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        {/* Mobile Menu Header */}
-        <div className="container flex items-center justify-between py-5 border-b border-border/30">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-            <Logo loading="eager" priority="high" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link 
-              href="/search" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 rounded-full text-foreground/60 hover:bg-foreground/5 hover:text-red-600 transition-colors"
-            >
-              <SearchIcon className="w-6 h-6" />
-            </Link>
-            <button 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 rounded-full bg-foreground/5 text-foreground hover:bg-red-50 hover:text-red-600 transition-colors"
-              aria-label="Close Menu"
-            >
-              <X className="w-7 h-7" />
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Content */}
-        <div className="container py-8 flex flex-col gap-8 flex-grow">
-          <Link 
-            href="/" 
-            className={cn("text-2xl font-bold transition-colors", isActive('/', true) ? "text-red-600" : "text-foreground")}
-          >
-            Beranda
-          </Link>
-          
-          {/* Dropdown Tentang Kami Mobile */}
-          <div className="flex flex-col border-y border-border/50 py-6">
-            <button 
-              onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-              className="flex items-center justify-between text-2xl font-bold text-foreground"
-            >
-              Tentang Kami
-              <ChevronDown className={cn("w-6 h-6 transition-transform", mobileDropdownOpen ? "rotate-180 text-red-600" : "")} />
-            </button>
-            
-            <div className={cn(
-              "flex flex-col gap-5 overflow-hidden transition-all duration-300", 
-              mobileDropdownOpen ? "max-h-[500px] mt-6 opacity-100" : "max-h-0 opacity-0"
-            )}>
-              <Link href="/tentang-kami" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami', true) ? "text-red-600" : "text-foreground/70")}>Sejarah Singkat</Link>
-              <Link href="/tentang-kami/latar-belakang" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami/latar-belakang') ? "text-red-600" : "text-foreground/70")}>Latar Belakang</Link>
-              <Link href="/tentang-kami/struktur-organisasi" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami/struktur-organisasi') ? "text-red-600" : "text-foreground/70")}>Struktur Organisasi</Link>
-              <Link href="/tentang-kami/visi-misi" onClick={() => setIsMobileMenuOpen(false)} className={cn("pl-4 text-xl font-medium transition-colors", isActive('/tentang-kami/visi-misi') ? "text-red-600" : "text-foreground/70")}>Visi dan Misi</Link>
-            </div>
-          </div>
-          
-          {navItems.map(({ link }, i) => {
-            const href = link.type === 'reference' && typeof link.reference?.value === 'object' && link.reference.value.slug
-                ? `${link.reference?.relationTo !== 'pages' ? `/${link.reference?.relationTo}` : ''}/${link.reference.value.slug}`
-                : link.url;
-            const isDynamicActive = href && href !== '/' ? pathname.startsWith(href) : false;
-            
-            return (
-               <div key={i} onClick={() => setIsMobileMenuOpen(false)}>
-                 <CMSLink 
-                   {...link} 
-                   appearance="link"
-                   className={cn("text-2xl font-bold transition-colors", isDynamicActive ? "text-red-600" : "text-foreground")} 
-                 />
-               </div>
-            )
-          })}
-          
-          <div className="mt-auto pt-8 pb-8">
-            <Link 
-              href="/hubungi-kami" 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center w-full py-5 rounded-full font-bold text-xl bg-red-600 text-white shadow-lg active:scale-95 transition-transform"
-            >
-              Hubungi Kami
-            </Link>
-          </div>
-        </div>
-      </div>
+      {mounted && createPortal(mobileMenuContent, document.body)}
     </>
   )
 }
