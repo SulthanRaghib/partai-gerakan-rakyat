@@ -44,6 +44,11 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
+      
+      <Link href="/hubungi-kami" className="ml-2 px-5 py-2.5 bg-red-600 text-white rounded-full font-semibold text-sm hover:bg-red-700 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+        Hubungi Kami
+      </Link>
+
       <Link href="/search" className="ml-2">
         <span className="sr-only">Search</span>
         <SearchIcon className="w-5 text-primary hover:text-red-600 transition-colors" />
