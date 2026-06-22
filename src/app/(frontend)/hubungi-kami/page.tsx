@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function HubungiKamiPage() {
   return (
-    <div className="container pt-8 pb-12 md:pt-12 md:pb-20 lg:pt-16 lg:pb-24">
+    <div className="container pt-32 pb-12 md:pt-36 md:pb-20 lg:pt-40 lg:pb-24">
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-foreground">Mari Bersama <span className="text-red-600">Menyalakan Harapan!</span></h1>

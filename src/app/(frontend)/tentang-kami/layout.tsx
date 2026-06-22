@@ -6,7 +6,7 @@ export default function TentangKamiLayout({ children }: { children: React.ReactN
   return (
     <main className="w-full min-h-screen bg-background font-sans pb-32">
       {/* Hero Header */}
-      <section className="relative w-full pt-12 pb-20 overflow-hidden mb-16">
+      <section className="relative w-full pt-32 pb-20 overflow-hidden mb-16">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-background to-orange-500/5 dark:from-red-900/20 dark:to-orange-900/10 z-0" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-[100px] mix-blend-screen z-0 translate-x-1/2 -translate-y-1/2" />
         
