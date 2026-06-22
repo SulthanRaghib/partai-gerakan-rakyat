@@ -93,13 +93,13 @@ export default function StrukturOrganisasiPage() {
         </p>
 
         <div className="flex flex-col gap-10">
-          {/* Image - Now full width for better visibility */}
-          <div className="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl border border-foreground/10 group">
+          {/* Image - Natural aspect ratio to prevent cropping */}
+          <div className="w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/assets/img/organisasi.png" 
               alt="Bagan Struktur Organisasi DPD Cilegon" 
-              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-auto rounded-3xl shadow-2xl border border-foreground/10 hover:scale-[1.02] transition-transform duration-700"
             />
           </div>
 
