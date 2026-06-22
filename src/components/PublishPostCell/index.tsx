@@ -5,9 +5,10 @@ import React, { useState } from 'react'
 export const PublishPostCell: React.FC<{
   cellData: any
   rowData: any
-}> = ({ cellData, rowData }) => {
+}> = ({ rowData }) => {
   // Payload draft statuses are typically 'published' or 'draft'
-  const [status, setStatus] = useState(cellData === 'published' ? 'published' : 'draft')
+  const initialStatus = rowData?._status || 'draft'
+  const [status, setStatus] = useState(initialStatus)
   const [isLoading, setIsLoading] = useState(false)
 
   const isPublished = status === 'published'

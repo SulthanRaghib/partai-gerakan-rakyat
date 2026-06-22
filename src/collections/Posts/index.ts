@@ -49,7 +49,7 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   admin: {
     group: 'Manajemen Konten',
-    defaultColumns: ['title', '_status', 'updatedAt'],
+    defaultColumns: ['title', 'publishToggle', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -225,12 +225,9 @@ export const Posts: CollectionConfig<'posts'> = {
       },
     },
     {
-      name: '_status',
-      type: 'select',
-      options: [
-        { label: 'Draft', value: 'draft' },
-        { label: 'Published', value: 'published' }
-      ],
+      name: 'publishToggle',
+      type: 'ui',
+      label: 'Status',
       admin: {
         position: 'sidebar',
         components: {
