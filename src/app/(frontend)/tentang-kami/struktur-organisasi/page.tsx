@@ -1,48 +1,140 @@
 import type { Metadata } from 'next'
 import React from 'react'
-import { Users } from 'lucide-react'
+import { Users, Award, Briefcase, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Struktur Organisasi - Partai Gerakan Rakyat',
-  description: 'Mengenal struktur kepengurusan Partai Gerakan Rakyat dari pusat hingga ke daerah.',
-  keywords: 'Struktur Organisasi, Pengurus Partai Gerakan Rakyat, Sahrin Hamid',
+  description: 'Profil Ketua Umum Sahrin Hamid dan Struktur Organisasi Dewan Pimpinan Daerah (DPD) Partai Gerakan Rakyat Kota Cilegon.',
+  keywords: 'Struktur Organisasi, Pengurus Partai Gerakan Rakyat, Sahrin Hamid, DPD Cilegon, Indonesia Menyala',
 }
 
 export default function StrukturOrganisasiPage() {
   return (
-    <div className="space-y-6">
-      <div className="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-8 text-blue-600 dark:text-blue-400">
-        <Users className="w-8 h-8" />
-      </div>
-      <h2 className="text-3xl md:text-4xl font-bold mb-6">Struktur Kepengurusan</h2>
-      <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-        Partai Gerakan Rakyat dikelola secara profesional dan inklusif oleh putra-putri terbaik bangsa dari Sabang sampai Merauke.
-      </p>
-      
-      {/* Placeholder Hierarchy Tree */}
-      <div className="flex flex-col items-center gap-4 py-8 border-t border-b border-foreground/10">
-        <div className="w-full max-w-sm p-4 rounded-xl bg-background border-2 border-red-500/50 text-center shadow-lg">
-          <div className="text-xs font-bold text-red-500 uppercase tracking-widest mb-1">Ketua Umum</div>
-          <div className="text-xl font-bold">Sahrin Hamid</div>
+    <div className="space-y-12">
+      {/* Header Section */}
+      <div>
+        <div className="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-8 text-blue-600 dark:text-blue-400">
+          <Users className="w-8 h-8" />
         </div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">Profil Kepemimpinan & Struktur Organisasi</h2>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          Partai Gerakan Rakyat dinakhodai oleh figur-figur organisatoris tangguh yang memiliki visi besar untuk keadilan dan kesejahteraan rakyat, mulai dari tingkat pusat hingga menjangkau seluruh pelosok daerah.
+        </p>
+      </div>
+
+      {/* Profil Ketua Umum */}
+      <section className="bg-foreground/5 border border-foreground/10 rounded-3xl p-6 md:p-10 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-bl-full z-0" />
         
-        <div className="w-1 h-8 bg-foreground/10" />
-        <div className="w-full max-w-2xl h-1 bg-foreground/10" />
-        
-        <div className="flex w-full max-w-2xl justify-between gap-4 pt-4">
-          <div className="flex-1 p-4 rounded-xl bg-foreground/5 border border-foreground/10 text-center">
-            <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Sekretaris Jenderal</div>
-            <div className="text-lg font-bold">[Nama Sekjen]</div>
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-semibold text-sm mb-6">
+            <Award className="w-4 h-4" />
+            <span>Ketua Umum Nasional</span>
           </div>
-          <div className="flex-1 p-4 rounded-xl bg-foreground/5 border border-foreground/10 text-center">
-            <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Bendahara Umum</div>
-            <div className="text-lg font-bold">[Nama Bendum]</div>
+          
+          <h3 className="text-3xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">
+            Sahrin Hamid
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-8 text-muted-foreground leading-relaxed">
+            <div className="space-y-4">
+              <p>
+                Lahir di bumi Maluku Utara pada 4 Desember 1975, Sahrin Hamid adalah sosok organisatoris tulen dengan fondasi akademis yang kuat. Beliau mengawali perjalanannya dari Diploma di Bumi Hijrah, Tidore, sebelum mengukuhkan pemahaman ilmu hukumnya dengan meraih gelar Sarjana Hukum dari Universitas Islam Bandung (Unisba) dan Universitas Jakarta. Ketajamannya sebagai ahli hukum semakin paripurna berkat perolehan gelar Magister Ilmu Hukum dari Universitas Nasional.
+              </p>
+              <p>
+                Di bawah kepemimpinannya, Partai Gerakan Rakyat dirancang menjadi motor penggerak perubahan yang sangat inklusif—memperkuat ruang partisipasi masyarakat dari segala lapisan, dan membangun kolaborasi nyata demi memperjuangkan masa depan Indonesia yang jauh lebih baik.
+              </p>
+            </div>
+            
+            <div className="bg-background rounded-2xl p-6 shadow-sm border border-foreground/5 space-y-4">
+              <h4 className="font-bold text-foreground flex items-center gap-2 mb-4">
+                <Briefcase className="w-5 h-5 text-red-500" /> Rekam Jejak Politik
+              </h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span><strong>Anggota DPR RI</strong> (2004–2009)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span><strong>Ketua Umum DPP Barisan Muda PAN</strong> (2003–2006)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span><strong>Wakil Sekjen DPP PAN</strong> (2005–2010) & <strong>Ketua DPP PAN</strong> (2010–2011)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span><strong>Calon Wakil Gubernur Maluku Utara</strong> (Pilkada 2013)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span><strong>Staf Khusus Gubernur Maluku Utara</strong> (2018)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <span><strong>Juru Bicara Nasional</strong> Bapak Anies Baswedan</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <p className="text-sm text-center text-muted-foreground mt-4 italic">
-        *Struktur rinci tingkat pusat, daerah, hingga cabang sedang dalam tahap pembaruan.
-      </p>
+      </section>
+
+      {/* Separator */}
+      <hr className="border-foreground/10" />
+
+      {/* Struktur DPD Cilegon */}
+      <section>
+        <h3 className="text-2xl font-bold mb-8">Struktur Formatur DPD Kota Cilegon, Banten</h3>
+        <p className="text-muted-foreground mb-8">
+          Di tingkat wilayah, Partai Gerakan Rakyat dikawal oleh tokoh-tokoh berdedikasi yang siap menyalakan harapan di tengah masyarakat. Berikut adalah susunan pengurus inti <strong>Dewan Pimpinan Daerah (DPD) Kota Cilegon untuk periode 2026-2031</strong>:
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* List Pengurus */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
+              <span className="font-semibold text-red-600 dark:text-red-400">1. Ketua</span>
+              <span className="font-bold">H. Sakim, S.Pd.l</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground">2. Wakil Ketua</span>
+              <span className="font-bold">Triyono Eddy Santoso</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground">3. Sekretaris</span>
+              <span className="font-bold">Drs. Suwito</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground">4. Wakil Sekretaris</span>
+              <span className="font-bold">Rakha Dwi Saputra</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground">5. Bendahara</span>
+              <span className="font-bold">Hj. Andi Yuliyanah</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-foreground/5 border border-foreground/10 rounded-xl">
+              <span className="font-semibold text-muted-foreground">6. Wakil Bendahara</span>
+              <span className="font-bold">Wildayani</span>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-foreground/10">
+            <Image 
+              src="/assets/img/organisasi.png" 
+              alt="Bagan Struktur Organisasi DPD Cilegon" 
+              fill
+              className="object-cover object-center hover:scale-105 transition-transform duration-700"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }
