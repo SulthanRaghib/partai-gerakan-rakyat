@@ -14,6 +14,7 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { CommentsSection } from '@/components/CommentsSection'
 
 export async function generateStaticParams() {
   try {
@@ -56,9 +57,33 @@ export default async function Post({ params: paramsPromise }: Args) {
 
   if (!post) return <PayloadRedirects url={url} />
 
+  // Fetch approved comments for this post
+  const payload = await getPayload({ config: configPromise })
+  const commentsResult = await payload.find({
+    collection: 'comments',
+    where: {
+      post: {
+        equals: post.id,
+      },
+      isApproved: {
+        equals: true,
+      },
+    },
+    sort: '-createdAt', // Terbaru di atas
+    pagination: false,
+  })
+
+  // Format comments to simple objects for the client component
+  const formattedComments = commentsResult.docs.map(doc => ({
+    id: doc.id,
+    authorName: doc.authorName,
+    content: doc.content,
+    createdAt: doc.createdAt,
+  }))
+
   return (
     <article className="pt-16 pb-16">
-      <PageClient />
+      <PageClient postId={post.id} />
 
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
@@ -76,6 +101,8 @@ export default async function Post({ params: paramsPromise }: Args) {
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}
+          
+          <CommentsSection postId={post.id} initialComments={formattedComments} />
         </div>
       </div>
     </article>

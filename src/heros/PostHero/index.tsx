@@ -5,6 +5,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
+import { Eye, Calendar, User } from 'lucide-react'
 
 export const PostHero: React.FC<{
   post: Post
@@ -14,59 +15,59 @@ export const PostHero: React.FC<{
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
+  // @ts-ignore - views will be added to the database soon
+  const views = post.views || 0
+
   return (
-    <div className="relative -mt-[10.4rem] flex items-end">
-      <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
-        <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2">
-          <div className="uppercase text-sm mb-6">
-            {categories?.map((category, index) => {
-              if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
+    <div className="relative pt-12 pb-8 flex flex-col items-center text-center">
+      <div className="container z-10 relative max-w-4xl">
+        <div className="uppercase text-sm font-bold text-red-600 mb-4 tracking-wider">
+          {categories?.map((category, index) => {
+            if (typeof category === 'object' && category !== null) {
+              const { title: categoryTitle } = category
+              const titleToUse = categoryTitle || 'Tak Berkategori'
+              const isLast = index === categories.length - 1
+              return (
+                <React.Fragment key={index}>
+                  {titleToUse}
+                  {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
+                </React.Fragment>
+              )
+            }
+            return null
+          })}
+        </div>
 
-                const titleToUse = categoryTitle || 'Untitled category'
+        <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-black text-foreground">{title}</h1>
 
-                const isLast = index === categories.length - 1
-
-                return (
-                  <React.Fragment key={index}>
-                    {titleToUse}
-                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                  </React.Fragment>
-                )
-              }
-              return null
-            })}
-          </div>
-
-          <div className="">
-            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl">{title}</h1>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-4 md:gap-16">
-            {hasAuthors && (
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm">Author</p>
-
-                  <p>{formatAuthors(populatedAuthors)}</p>
-                </div>
-              </div>
-            )}
-            {publishedAt && (
-              <div className="flex flex-col gap-1">
-                <p className="text-sm">Date Published</p>
-
-                <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
-              </div>
-            )}
+        <div className="flex flex-wrap justify-center items-center gap-6 text-foreground/60 mb-10 text-sm font-medium">
+          {hasAuthors && (
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              <span>{formatAuthors(populatedAuthors)}</span>
+            </div>
+          )}
+          {publishedAt && (
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
+            </div>
+          )}
+          <div className="flex items-center gap-2">
+            <Eye className="w-4 h-4" />
+            <span>{views} Dilihat</span>
           </div>
         </div>
       </div>
-      <div className="min-h-[80vh] select-none">
-        {heroImage && typeof heroImage !== 'string' && (
-          <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
+
+      <div className="container max-w-5xl">
+        {heroImage && typeof heroImage !== 'string' ? (
+          <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden shadow-xl mb-8">
+            <Media fill priority imgClassName="object-cover" resource={heroImage} />
+          </div>
+        ) : (
+          <div className="w-full h-px bg-border/50 my-8" />
         )}
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-linear-to-t from-black to-transparent" />
       </div>
     </div>
   )
