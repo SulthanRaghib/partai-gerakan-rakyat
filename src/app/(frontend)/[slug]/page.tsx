@@ -12,6 +12,7 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { CilegonHome } from '@/components/CilegonHome'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -55,6 +56,17 @@ export default async function Page({ params: paramsPromise }: Args) {
     slug: decodedSlug,
   })
 
+  if (decodedSlug === 'home') {
+    return (
+      <React.Fragment>
+        <PageClient />
+        <PayloadRedirects disableNotFound url={url} />
+        {draft && <LivePreviewListener />}
+        <CilegonHome />
+      </React.Fragment>
+    )
+  }
+
   // Remove this code once your website is seeded
   if (!page && slug === 'home') {
     page = homeStatic
@@ -84,6 +96,36 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const { slug = 'home' } = await paramsPromise
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
+
+  if (decodedSlug === 'home') {
+    return {
+      title: 'Partai Gerakan Rakyat - Dewan Pimpinan Cabang Cilegon',
+      description: 'Website resmi Partai Gerakan Rakyat Cabang Cilegon. Bersama mewujudkan demokrasi gotong royong dan ekonomi kerakyatan.',
+      keywords: 'Partai Gerakan Rakyat, PGR Cilegon, Sahrin Hamid, Partai Politik Cilegon, Anies Baswedan, Gerakan Rakyat, Partai Baru',
+      openGraph: {
+        title: 'Partai Gerakan Rakyat - Cabang Cilegon',
+        description: 'Mewujudkan demokrasi gotong royong dan ekonomi kerakyatan di Cilegon.',
+        url: 'https://compro-bapak.com',
+        siteName: 'Partai Gerakan Rakyat Cilegon',
+        images: [
+          {
+            url: '/og-image.jpg',
+            width: 1200,
+            height: 630,
+            alt: 'Partai Gerakan Rakyat Cilegon',
+          },
+        ],
+        locale: 'id_ID',
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Partai Gerakan Rakyat - Cabang Cilegon',
+        description: 'Mewujudkan demokrasi gotong royong dan ekonomi kerakyatan di Cilegon.',
+      }
+    }
+  }
+
   const page = await queryPageBySlug({
     slug: decodedSlug,
   })
