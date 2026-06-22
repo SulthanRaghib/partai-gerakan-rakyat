@@ -1,41 +1,19 @@
 /* Custom Payload CMS Backend Theme */
 
 :root {
-  /* Override accent color */
-  --theme-elevation-50: #fef2f2;
-  --theme-elevation-100: #fee2e2;
-  --theme-elevation-150: #fecaca;
-  --theme-elevation-200: #fca5a5;
-  --theme-elevation-250: #f87171;
-  --theme-elevation-300: #ef4444;
-  --theme-elevation-350: #dc2626; /* primary red */
-  --theme-elevation-400: #b91c1c;
-  --theme-elevation-450: #991b1b;
-  --theme-elevation-500: #7f1d1d;
-
-  --theme-bg: #f9fafb;
-  
-  --theme-success-400: #10b981;
-  --theme-success-500: #059669;
-
-  /* Use red for generic brand colors */
-  --theme-brand-light: var(--theme-elevation-50);
-  --theme-brand-main: var(--theme-elevation-350);
-  --theme-brand-dark: var(--theme-elevation-500);
-
-  /* Button styles override */
-  --btn-bg: var(--theme-elevation-350);
-  --btn-hover-bg: var(--theme-elevation-400);
+  /* Keep default neutral colors but add some polish */
+  /* Remove the aggressive red theme */
 
   /* Navigation Sidebar */
   --nav-bg: #111827;
   --nav-text: #ffffff;
   --nav-hover-bg: #1f2937;
-  --nav-active-bg: var(--theme-elevation-350);
+  
+  --theme-success-400: #10b981;
+  --theme-success-500: #059669;
 }
 
 html[data-theme='dark'] {
-  --theme-bg: #030712;
   --nav-bg: #000000;
 }
 
@@ -48,17 +26,7 @@ html[data-theme='dark'] {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--theme-elevation-350);
   margin-top: 1.5rem;
-}
-
-.btn--style-primary {
-  background-color: var(--theme-elevation-350) !important;
-  color: white !important;
-}
-
-.btn--style-primary:hover {
-  background-color: var(--theme-elevation-400) !important;
 }
 
 .table-layout {

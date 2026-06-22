@@ -54,6 +54,9 @@ export const Comments: CollectionConfig = {
       label: 'Disetujui (Tampil di Publik)',
       admin: {
         position: 'sidebar',
+        components: {
+          Cell: '@/components/ApproveCommentCell#ApproveCommentCell',
+        },
       },
     },
   ],
