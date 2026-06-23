@@ -111,9 +111,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         </div>
         
         <Link 
-          href="/posts" 
+          href="/kabar-pergerakan" 
           onClick={() => setIsMobileMenuOpen(false)}
-          className={cn("text-2xl font-bold transition-colors", isActive('/posts') ? "text-red-600" : "text-foreground")}
+          className={cn("text-2xl font-bold transition-colors", isActive('/kabar-pergerakan') ? "text-red-600" : "text-foreground")}
         >
           Kabar Pergerakan
         </Link>
@@ -238,14 +238,14 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
         {/* Kabar Pergerakan */}
         <Link 
-          href="/posts" 
+          href="/kabar-pergerakan" 
           className={cn(
             "relative px-3 py-2 font-medium transition-colors hover:text-red-600 group",
-            isActive('/posts') ? "text-red-600" : "text-foreground/80"
+            isActive('/kabar-pergerakan') ? "text-red-600" : "text-foreground/80"
           )}
         >
           Kabar Pergerakan
-          <span className={cn(activeLine, isActive('/posts') ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100")} />
+          <span className={cn(activeLine, isActive('/kabar-pergerakan') ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100")} />
         </Link>
 
         {navItems.map(({ link }, i) => {
