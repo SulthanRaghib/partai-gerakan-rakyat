@@ -35,8 +35,10 @@ export default buildConfig({
     },
     meta: {
       titleSuffix: '- Panel Web',
-      favicon: '/assets/img/logo_pgr.png',
-      ogImage: '/assets/img/logo_pgr.png',
+      icons: [{ rel: 'icon', type: 'image/png', url: '/assets/img/logo_pgr.png' }],
+      openGraph: {
+        images: [{ url: '/assets/img/logo_pgr.png' }],
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),
