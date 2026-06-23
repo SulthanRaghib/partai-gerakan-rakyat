@@ -223,10 +223,22 @@ const BeforeLogin: React.FC = () => {
       </a>
 
       <div className="custom-login-header" style={{ textAlign: 'center', marginBottom: '2rem', marginTop: '1rem' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: 800, margin: '0 0 0.5rem 0', color: '#111827', letterSpacing: '-0.5px' }}>
+        <h2 style={{ 
+          fontSize: '1.75rem', 
+          fontWeight: 800, 
+          margin: '0 0 0.5rem 0', 
+          color: '#ffffff', 
+          letterSpacing: '-0.5px',
+          textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+        }}>
           Portal Admin PGR
         </h2>
-        <p style={{ color: '#6b7280', margin: 0, fontSize: '0.95rem' }}>
+        <p style={{ 
+          color: 'rgba(255, 255, 255, 0.9)', 
+          margin: 0, 
+          fontSize: '0.95rem',
+          textShadow: '0 1px 5px rgba(0,0,0,0.5)'
+        }}>
           Silakan masukkan email dan sandi Anda untuk mengakses dashboard.
         </p>
       </div>
