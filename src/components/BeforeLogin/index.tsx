@@ -81,9 +81,10 @@ const BeforeLogin: React.FC = () => {
   return (
     <>
       <style>{`
-        /* Memaksa layout payload-login menjadi split screen */
+        /* Memaksa background utama menjadi transparan agar latar belakang custom terlihat */
         html, body {
-          background-color: #f9fafb !important;
+          background-color: transparent !important;
+          min-height: 100vh;
         }
         
         /* Container utama Payload 3 login */
@@ -91,49 +92,38 @@ const BeforeLogin: React.FC = () => {
         main,
         #app {
           display: flex;
-          justify-content: flex-end;
+          justify-content: center;
+          align-items: center;
           min-height: 100vh;
+          width: 100%;
         }
 
-        /* Latar belakang sisi kiri */
+        /* Latar belakang full layar dengan efek blur */
         body::before {
           content: '';
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 55%;
-          height: 100vh;
-          background: url('/assets/img/organisasi.png') center/cover no-repeat;
-          z-index: 0;
-          box-shadow: inset -20px 0 50px -10px rgba(0,0,0,0.3);
-          display: none;
+          top: -5%;
+          left: -5%;
+          width: 110%;
+          height: 110%;
+          background: url('/assets/img/landmark_cilegon.png') center/cover no-repeat;
+          z-index: -1;
+          filter: blur(8px) brightness(0.6);
         }
 
-        @media (min-width: 1024px) {
-          body::before { display: block; }
-        }
-
-        /* Kotak form di sisi kanan */
+        /* Kotak form di tengah */
         form, .payload-form {
           position: relative;
           z-index: 10;
-          background: #ffffff !important;
-          border: 1px solid #e5e7eb !important;
+          background: rgba(255, 255, 255, 0.95) !important;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
           border-radius: 20px !important;
-          padding: 2.5rem 2rem !important;
-          box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05) !important;
-          margin-top: 1.5rem !important;
+          padding: 3rem 2.5rem !important;
+          box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+          margin: auto !important;
           width: 100% !important;
           max-width: 440px !important;
-        }
-
-        /* Container form agarkeh margin right */
-        @media (min-width: 1024px) {
-          form, .payload-form {
-            margin-right: 5vw !important;
-            margin-top: auto !important;
-            margin-bottom: auto !important;
-          }
         }
 
         /* Input modern */
@@ -143,32 +133,51 @@ const BeforeLogin: React.FC = () => {
           border-radius: 10px !important;
           padding: 0.875rem 1.25rem !important;
           border: 1.5px solid #d1d5db !important;
-          background: #f9fafb !important;
-          transition: all 0.25s ease !important;
+          background: #ffffff !important;
+          transition: all 0.2s ease !important;
         }
 
         input:focus {
           border-color: #ea580c !important;
-          background: #ffffff !important;
-          box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1) !important;
+          box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15) !important;
         }
 
-        /* Tombol submit modern */
+        /* Tombol submit solid */
         button[type="submit"] {
-          background: linear-gradient(135deg, #f97316 0%, #c2410c 100%) !important;
+          background: #ea580c !important; /* Warna oranye solid */
           color: white !important;
           border-radius: 10px !important;
           padding: 1rem 1.5rem !important;
           font-weight: 700 !important;
           font-size: 1.05rem !important;
           margin-top: 1rem !important;
-          transition: all 0.3s ease !important;
-          box-shadow: 0 10px 15px -3px rgba(234, 88, 12, 0.3) !important;
+          transition: all 0.2s ease !important;
+          border: none !important;
+          box-shadow: 0 4px 6px -1px rgba(234, 88, 12, 0.3) !important;
         }
 
         button[type="submit"]:hover {
-          transform: translateY(-3px) !important;
-          box-shadow: 0 15px 25px -5px rgba(234, 88, 12, 0.4) !important;
+          background: #c2410c !important; /* Warna sedikit lebih gelap saat hover */
+          transform: translateY(-2px) !important;
+          box-shadow: 0 10px 15px -3px rgba(234, 88, 12, 0.4) !important;
+        }
+
+        /* Memperbaiki header agar tidak tertutup */
+        .custom-login-header {
+          position: relative;
+          z-index: 20;
+          text-align: center;
+          margin-bottom: 2rem;
+          margin-top: 1rem;
+        }
+        
+        /* Memperbaiki logo bawaan payload agar terlihat proporsional (jika ada) */
+        .payload-logo {
+          position: relative;
+          z-index: 20;
+          margin-bottom: 1rem;
+          display: flex;
+          justify-content: center;
         }
       `}</style>
       
