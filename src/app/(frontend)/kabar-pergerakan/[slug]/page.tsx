@@ -75,7 +75,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
   // Format comments to simple objects for the client component
   const formattedComments = commentsResult.docs.map(doc => ({
-    id: doc.id,
+    id: String(doc.id),
     authorName: doc.authorName,
     content: doc.content,
     createdAt: doc.createdAt,
