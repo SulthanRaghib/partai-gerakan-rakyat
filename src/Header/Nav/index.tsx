@@ -135,13 +135,20 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           )
         })}
         
-        <div className="mt-auto pt-8 pb-8">
+        <div className="mt-auto pt-8 pb-8 flex flex-col gap-4">
           <Link 
             href="/hubungi-kami" 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center justify-center w-full py-5 rounded-full font-bold text-xl bg-red-600 text-white shadow-lg active:scale-95 transition-transform"
+            className="flex items-center justify-center w-full py-4 rounded-full font-bold text-xl bg-red-600 text-white shadow-lg active:scale-95 transition-transform"
           >
             Hubungi Kami
+          </Link>
+          <Link 
+            href="/admin/login" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center w-full py-4 rounded-full font-bold text-xl bg-foreground/10 text-foreground shadow-sm active:scale-95 transition-transform"
+          >
+            Login Admin
           </Link>
         </div>
       </div>
@@ -289,6 +296,15 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         >
           <span className="sr-only">Search</span>
           <SearchIcon className="w-5 h-5" />
+        </Link>
+        
+        {/* Login Admin Button */}
+        <Link 
+          href="/admin/login" 
+          className="ml-2 px-5 py-2 rounded-full font-bold text-sm bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors shadow-sm flex items-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Login
         </Link>
       </nav>
 
