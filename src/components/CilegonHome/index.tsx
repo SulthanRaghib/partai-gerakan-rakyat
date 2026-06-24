@@ -180,9 +180,9 @@ export const CilegonHome: React.FC = () => {
                   
                   <h4 className="text-3xl font-bold mb-2 group-hover:text-red-600 transition-colors">{feature.title}</h4>
                   
-                  <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+                  <div className="grid grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
                     <div className="overflow-hidden">
-                      <p className="text-muted-foreground pt-4 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                      <p className="text-muted-foreground pt-4 leading-relaxed opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 lg:delay-100">
                         {feature.desc}
                       </p>
                     </div>
