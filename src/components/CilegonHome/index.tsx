@@ -169,22 +169,26 @@ export const CilegonHome: React.FC = () => {
                 desc: "Membangun sistem ekonomi yang memihak rakyat kecil, UMKM, dan perlindungan penuh terhadap hak-hak buruh."
               }
             ].map((feature, i) => (
-              <div key={i} className="group relative h-80 rounded-[2rem] bg-background border border-foreground/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10" />
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-red-600/5 group-hover:bg-red-600/10 transition-colors duration-500" />
+              <div key={i} className="group relative h-full min-h-[24rem] rounded-[2rem] bg-background border border-foreground/10 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10 pointer-events-none" />
+                <div className="absolute top-0 left-0 w-full h-1/2 bg-red-600/5 group-hover:bg-red-600/10 transition-colors duration-500 pointer-events-none" />
                 
-                <div className="relative z-20 p-10 flex flex-col h-full justify-end">
-                  <div className="absolute top-10 left-10 w-16 h-16 rounded-2xl bg-background shadow-md border border-foreground/5 flex items-center justify-center text-red-600 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
+                <div className="relative z-20 p-8 md:p-10 flex flex-col h-full justify-between gap-6">
+                  {/* Ikon di posisi atas */}
+                  <div className="w-16 h-16 shrink-0 rounded-2xl bg-background shadow-md border border-foreground/5 flex items-center justify-center text-red-600 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-500">
                     <feature.icon className="w-8 h-8" />
                   </div>
                   
-                  <h4 className="text-3xl font-bold mb-2 group-hover:text-red-600 transition-colors">{feature.title}</h4>
-                  
-                  <div className="grid grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
-                    <div className="overflow-hidden">
-                      <p className="text-muted-foreground pt-4 leading-relaxed opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 lg:delay-100">
-                        {feature.desc}
-                      </p>
+                  {/* Konten Teks di posisi bawah */}
+                  <div className="mt-auto">
+                    <h4 className="text-3xl font-bold mb-2 group-hover:text-red-600 transition-colors">{feature.title}</h4>
+                    
+                    <div className="grid grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out">
+                      <div className="overflow-hidden">
+                        <p className="text-muted-foreground pt-4 leading-relaxed opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 lg:delay-100">
+                          {feature.desc}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
