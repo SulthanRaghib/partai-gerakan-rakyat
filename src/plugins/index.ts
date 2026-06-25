@@ -12,6 +12,7 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
+import { cloudinaryStorage } from 'payload-storage-cloudinary'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
@@ -103,4 +104,20 @@ export const plugins: Plugin[] = [
       },
     },
   }),
+  ...(process.env.CLOUDINARY_CLOUD_NAME
+    ? [
+        cloudinaryStorage({
+          cloudConfig: {
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+            api_key: process.env.CLOUDINARY_API_KEY as string,
+            api_secret: process.env.CLOUDINARY_API_SECRET as string,
+          },
+          collections: {
+            media: {
+              folder: 'partai-gerakan-rakyat-indonesia',
+            },
+          },
+        }),
+      ]
+    : []),
 ]

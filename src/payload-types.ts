@@ -295,6 +295,19 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
+  cloudinaryPublicId?: string | null;
+  cloudinaryUrl?: string | null;
+  cloudinaryResourceType?: string | null;
+  cloudinaryFormat?: string | null;
+  cloudinaryVersion?: number | null;
+  /**
+   * Direct URL to the original file without transformations
+   */
+  originalUrl?: string | null;
+  /**
+   * URL with applied transformations
+   */
+  transformedUrl?: string | null;
   folder?: (number | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -302,6 +315,9 @@ export interface Media {
   thumbnailURL?: string | null;
   filename?: string | null;
   mimeType?: string | null;
+  /**
+   * File size in bytes
+   */
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
@@ -309,58 +325,170 @@ export interface Media {
   focalY?: number | null;
   sizes?: {
     thumbnail?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
     square?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
     small?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
     medium?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
     large?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
     xlarge?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
     og?: {
+      cloudinaryPublicId?: string | null;
+      cloudinaryUrl?: string | null;
+      cloudinaryResourceType?: string | null;
+      cloudinaryFormat?: string | null;
+      cloudinaryVersion?: number | null;
+      /**
+       * Direct URL to the original file without transformations
+       */
+      originalUrl?: string | null;
+      /**
+       * URL with applied transformations
+       */
+      transformedUrl?: string | null;
       url?: string | null;
       width?: number | null;
       height?: number | null;
       mimeType?: string | null;
+      /**
+       * File size in bytes
+       */
       filesize?: number | null;
       filename?: string | null;
     };
@@ -1247,6 +1375,13 @@ export interface PostsSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  cloudinaryPublicId?: T;
+  cloudinaryUrl?: T;
+  cloudinaryResourceType?: T;
+  cloudinaryFormat?: T;
+  cloudinaryVersion?: T;
+  originalUrl?: T;
+  transformedUrl?: T;
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1265,6 +1400,13 @@ export interface MediaSelect<T extends boolean = true> {
         thumbnail?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -1275,6 +1417,13 @@ export interface MediaSelect<T extends boolean = true> {
         square?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -1285,6 +1434,13 @@ export interface MediaSelect<T extends boolean = true> {
         small?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -1295,6 +1451,13 @@ export interface MediaSelect<T extends boolean = true> {
         medium?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -1305,6 +1468,13 @@ export interface MediaSelect<T extends boolean = true> {
         large?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -1315,6 +1485,13 @@ export interface MediaSelect<T extends boolean = true> {
         xlarge?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
@@ -1325,6 +1502,13 @@ export interface MediaSelect<T extends boolean = true> {
         og?:
           | T
           | {
+              cloudinaryPublicId?: T;
+              cloudinaryUrl?: T;
+              cloudinaryResourceType?: T;
+              cloudinaryFormat?: T;
+              cloudinaryVersion?: T;
+              originalUrl?: T;
+              transformedUrl?: T;
               url?: T;
               width?: T;
               height?: T;
