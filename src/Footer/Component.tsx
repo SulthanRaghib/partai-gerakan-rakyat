@@ -80,7 +80,7 @@ export async function Footer() {
                 <Phone className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
                   <a href="https://wa.me/6289510379131" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline transition-colors">
-                    089510379131
+                    +62 895-1037-9131
                   </a>
                   <a href="https://wa.me/6285697136634" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline transition-colors">
                     +62 856-9713-6634
