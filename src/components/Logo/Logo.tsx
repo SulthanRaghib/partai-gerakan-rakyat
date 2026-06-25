@@ -23,7 +23,7 @@ export const Logo = (props: Props) => {
       fetchPriority={priority}
       decoding="async"
       className={clsx('h-10 w-auto object-contain', className)}
-      src="/assets/img/logo_text_pgr.png"
+      src="/assets/img/logo.png"
     />
   )
 }

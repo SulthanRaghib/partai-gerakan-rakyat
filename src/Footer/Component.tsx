@@ -69,14 +69,16 @@ export async function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <span>
-                  Jl. Pejuang Rakyat No. 45<br />
-                  Kec. Jombang, Kota Cilegon<br />
-                  Banten, 42411
+                  Jl. Pandawa 02 Rt.06/03.<br />
+                  Kel. Bendungan Kec. Cilegon<br />
+                  Kota Cilegon Banten.
                 </span>
               </div>
               <div className="flex items-center gap-3 mt-2">
                 <Phone className="w-5 h-5 text-red-500 shrink-0" />
-                <span>+62 856-9713-6634</span>
+                <a href="https://wa.me/6289510379131" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline transition-colors">
+                  089510379131
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-red-500 shrink-0" />

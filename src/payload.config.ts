@@ -35,9 +35,9 @@ export default buildConfig({
     },
     meta: {
       titleSuffix: '- Panel Web',
-      icons: [{ rel: 'icon', type: 'image/png', url: '/assets/img/logo_pgr.png' }],
+      icons: [{ rel: 'icon', type: 'image/png', url: '/assets/img/logo.png' }],
       openGraph: {
-        images: [{ url: '/assets/img/logo_pgr.png' }],
+        images: [{ url: '/assets/img/logo.png' }],
       },
     },
     importMap: {
