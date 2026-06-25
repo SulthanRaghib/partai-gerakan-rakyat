@@ -23,9 +23,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="id" suppressHydrationWarning>
       <head>
         <InitTheme />
-        <link href="/icon.png" rel="icon" type="image/png" sizes="any" />
-        <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
         <meta name="google-site-verification" content="ESB8v_HEhk4DwSLBWe8tXQ9AOxfAntezbLDCx5XdLNY" />
+      </head>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -37,8 +37,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }),
           }}
         />
-      </head>
-      <body>
         <Providers>
           <AdminBar
             adminBarProps={{
@@ -57,6 +55,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-touch-icon.png',
+  },
   applicationName: 'Partai Gerakan Rakyat',
   title: {
     default: 'Partai Gerakan Rakyat - Dewan Pimpinan Cabang Cilegon',
