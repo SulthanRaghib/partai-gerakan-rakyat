@@ -33,11 +33,23 @@ const getPagesSitemap = unstable_cache(
 
     const defaultSitemap = [
       {
+        loc: `${SITE_URL}/`,
+        lastmod: dateFallback,
+      },
+      {
         loc: `${SITE_URL}/search`,
         lastmod: dateFallback,
       },
       {
         loc: `${SITE_URL}/kabar-pergerakan`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/tentang-kami`,
+        lastmod: dateFallback,
+      },
+      {
+        loc: `${SITE_URL}/hubungi-kami`,
         lastmod: dateFallback,
       },
     ]
