@@ -134,12 +134,32 @@ const BeforeLogin: React.FC = () => {
           padding: 0.875rem 1.25rem !important;
           border: 1.5px solid #d1d5db !important;
           background: #ffffff !important;
+          color: #1f2937 !important;
           transition: all 0.2s ease !important;
         }
 
         input:focus {
           border-color: #ea580c !important;
           box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15) !important;
+        }
+
+        /* Memaksa teks label dan link menjadi gelap agar kontras dengan form putih (anti dark-mode bleeding) */
+        form label, 
+        .payload-form label {
+          color: #374151 !important;
+          font-weight: 600 !important;
+        }
+
+        form a, 
+        .payload-form a {
+          color: #ea580c !important;
+          font-weight: 500 !important;
+          text-decoration: none !important;
+        }
+
+        form a:hover, 
+        .payload-form a:hover {
+          text-decoration: underline !important;
         }
 
         /* Tombol submit solid */
