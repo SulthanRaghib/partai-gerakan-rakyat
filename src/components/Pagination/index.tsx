@@ -9,7 +9,7 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 import { cn } from '@/utilities/ui'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import React from 'react'
 
 export const Pagination: React.FC<{
@@ -18,6 +18,8 @@ export const Pagination: React.FC<{
   totalPages: number
 }> = (props) => {
   const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const { className, page, totalPages } = props
   const hasNextPage = page < totalPages
@@ -25,6 +27,12 @@ export const Pagination: React.FC<{
 
   const hasExtraPrevPages = page - 1 > 1
   const hasExtraNextPages = page + 1 < totalPages
+
+  const buildUrl = (pageNumber: number) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('page', pageNumber.toString())
+    return `${pathname}?${params.toString()}`
+  }
 
   return (
     <div className={cn('my-12', className)}>
@@ -34,7 +42,7 @@ export const Pagination: React.FC<{
             <PaginationPrevious
               disabled={!hasPrevPage}
               onClick={() => {
-                router.push(`/kabar-pergerakan/page/${page - 1}`)
+                if (hasPrevPage) router.push(buildUrl(page - 1))
               }}
             />
           </PaginationItem>
@@ -49,7 +57,7 @@ export const Pagination: React.FC<{
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
-                  router.push(`/kabar-pergerakan/page/${page - 1}`)
+                  router.push(buildUrl(page - 1))
                 }}
               >
                 {page - 1}
@@ -61,7 +69,7 @@ export const Pagination: React.FC<{
             <PaginationLink
               isActive
               onClick={() => {
-                router.push(`/kabar-pergerakan/page/${page}`)
+                router.push(buildUrl(page))
               }}
             >
               {page}
@@ -72,7 +80,7 @@ export const Pagination: React.FC<{
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
-                  router.push(`/kabar-pergerakan/page/${page + 1}`)
+                  router.push(buildUrl(page + 1))
                 }}
               >
                 {page + 1}
@@ -90,7 +98,7 @@ export const Pagination: React.FC<{
             <PaginationNext
               disabled={!hasNextPage}
               onClick={() => {
-                router.push(`/kabar-pergerakan/page/${page + 1}`)
+                if (hasNextPage) router.push(buildUrl(page + 1))
               }}
             />
           </PaginationItem>
