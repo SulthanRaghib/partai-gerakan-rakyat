@@ -5,10 +5,16 @@ import '../../admin.scss'
 export const AdminLogo = () => {
   return (
     <div className="admin-logo">
-      <img 
-        src="/assets/img/logo.png" 
-        alt="Logo Partai" 
-        style={{ maxWidth: '300px', width: '100%', height: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+      <img
+        src="/assets/img/logo.png"
+        alt="Logo Partai"
+        style={{
+          maxWidth: '150px',
+          width: '100%',
+          height: 'auto',
+          objectFit: 'contain',
+          filter: 'brightness(0) invert(1)',
+        }}
       />
     </div>
   )
@@ -17,9 +23,9 @@ export const AdminLogo = () => {
 export const AdminIcon = () => {
   return (
     <div className="admin-icon">
-      <img 
-        src="/assets/img/logo.png" 
-        alt="Ikon Partai" 
+      <img
+        src="/assets/img/logo.png"
+        alt="Ikon Partai"
         style={{ width: '32px', height: '32px', objectFit: 'contain' }}
       />
     </div>
