@@ -8,7 +8,7 @@ export const AdminLogo = () => {
       <img 
         src="/assets/img/logo.png" 
         alt="Logo Partai" 
-        style={{ maxWidth: '100%', maxHeight: '40px', objectFit: 'contain' }}
+        style={{ maxWidth: '100%', maxHeight: '70px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
       />
     </div>
   )
