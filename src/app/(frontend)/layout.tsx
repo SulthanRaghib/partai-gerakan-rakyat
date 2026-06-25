@@ -23,9 +23,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="id" suppressHydrationWarning>
       <head>
         <InitTheme />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/icon.png" rel="icon" type="image/png" sizes="any" />
+        <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
         <meta name="google-site-verification" content="ESB8v_HEhk4DwSLBWe8tXQ9AOxfAntezbLDCx5XdLNY" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Partai Gerakan Rakyat',
+              url: 'https://partai-gerakan-rakyat.vercel.app/',
+            }),
+          }}
+        />
       </head>
       <body>
         <Providers>
@@ -46,9 +57,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
+  applicationName: 'Partai Gerakan Rakyat',
+  title: {
+    default: 'Partai Gerakan Rakyat - Dewan Pimpinan Cabang Cilegon',
+    template: '%s | Partai Gerakan Rakyat',
+  },
+  openGraph: mergeOpenGraph({
+    siteName: 'Partai Gerakan Rakyat',
+    title: 'Partai Gerakan Rakyat - Dewan Pimpinan Cabang Cilegon',
+  }),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    creator: '@partaigerakanrakyat',
   },
 }

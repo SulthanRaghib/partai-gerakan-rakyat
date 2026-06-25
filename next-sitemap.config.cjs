@@ -1,14 +1,14 @@
 const SITE_URL =
   process.env.NEXT_PUBLIC_SERVER_URL ||
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  process.env.VERCEL_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined) ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ||
   'https://example.com'
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: SITE_URL,
   generateRobotsTxt: true,
-  exclude: ['/kabar-pergerakan-sitemap.xml', '/pages-sitemap.xml', '/*', '/kabar-pergerakan/*'],
+  exclude: ['/kabar-pergerakan-sitemap.xml', '/pages-sitemap.xml', '/admin/*'],
   robotsTxtOptions: {
     policies: [
       {
